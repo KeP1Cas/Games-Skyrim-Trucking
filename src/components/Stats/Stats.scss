@@ -1,0 +1,24 @@
+.stats-panel {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+    .money {
+        position: relative;
+        padding-left: 30px;
+
+        &::before{
+            content: '';
+            display: block;
+            position: absolute;
+
+            width: 20px;
+            height: 20px;
+            background-image: url("../../assets/img/imgonline-com-ua-Resize-4LsIBwEOjhcN5I.png");
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            left: 0;
+            top: 0;
+        }
+    }
+}

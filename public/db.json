@@ -1,0 +1,70 @@
+{ 
+    "goods": [
+{
+    "id": 1,
+    "title": "Золотая руда",
+    "imageUrl": "../src/assets/img/gold.png"
+  }, 
+  {
+    "id": 2,
+    "title": "Хлеб",
+    "imageUrl": "../src/assets/img/beard.png"
+  },
+  {
+    "id": 3,
+    "title": "Жаренный ласось",
+    "imageUrl": "../src/assets/img/lasos.png"
+  },
+  {
+    "id": 4,
+    "title": "Стрелы",
+    "imageUrl": "../src/assets/img/arrow.png"
+  },
+  {
+    "id": 5,
+    "title": "Яблоко",
+    "imageUrl": "../src/assets/img/apple.png"
+  },
+  {
+    "id": 6,
+    "title": "Железная руда",
+    "imageUrl": "../src/assets/img/iron.png"
+  },
+  {
+    "id": 7,
+    "title": "Стейк из Мамонта",
+    "imageUrl": "../src/assets/img/MammothSteak.png"
+  },
+  {
+    "id": 8,
+    "title": "Рубин",
+    "imageUrl": "../src/assets/img/rybu.png"
+  },
+  {
+    "id": 9,
+    "title": "Отрава",
+    "imageUrl": "../src/assets/img/yd.png"
+  },
+  {
+    "id": 10,
+    "title": "Зелье лёгких ног",
+    "imageUrl": "../src/assets/img/speed.png"
+  },
+  {
+    "id": 11,
+    "title": "Живица Сонного дерева",
+    "imageUrl": "../src/assets/img/jivica.png"
+  },
+  {
+    "id": 12,
+    "title": "Апатия Вермины",
+    "imageUrl": "../src/assets/img/Vermin.png"
+  },
+  {
+    "id": 13,
+    "title": "Стейк",
+    "imageUrl": "../src/assets/img/1.png"
+  }
+  ]
+}
+

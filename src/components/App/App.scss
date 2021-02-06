@@ -1,42 +1,51 @@
 .app {
-    
+
     margin: 0 auto;
     text-align: center;
-    padding: 18px;
-
     width: 800px;
-    height: 200px;
-
-    background: rgb(59, 79, 105);
+    background: #1b100a;
 
     .app-name {
-        color: white;
+        color: rgb(212, 136, 22);
         text-align: center;
         padding: 0;
-        margin: 0;
-        margin-bottom: 30px;
+        margin-bottom: 0 0 20px;
     }
 
-    .content{
+    .content {
         display: flex;
         justify-content: space-between;
+        padding: 10px;
+        background: #240e02;
 
-        .column{
-            width: 48%;
-            background: rgb(33, 32, 112);
-            padding: 10px 0;
+        .column {
+            width: 300px;
+
+
+            &:last-child {
+                width: 470px;
+            }
         }
 
-        .storage{
+        .storage {}
 
-        }
+        .transportation {}
 
-        .transportation{
+        .city__warehouse {}
+    }
 
-        }
+    .title {
+        background: #44200c;
+        border: 1px solid #877f72;
+        padding: 10px;
+        margin: 0;
+        color: rgb(212, 136, 22);
+    }
 
-        .city__warehouse{
-            
-        }
+    .panel {
+        border: 1px solid #877f72;
+        border-top: 0;
+
+        margin-bottom: 10px;
     }
 }

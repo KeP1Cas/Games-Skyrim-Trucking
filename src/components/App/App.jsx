@@ -2,6 +2,7 @@ import Citys from '../Citys/Citys';
 import Warehouse from '../Warehouse/Warehouse';
 import CityWarehouse from '../CityWarehouse/CityWarehouse';
 import Transportation from '../Transportation/Transportation';
+import Stats from '../Stats/Stats';
 
 import './App.scss';
 import { useState } from 'react';
@@ -9,7 +10,7 @@ import { useState } from 'react';
 function App() {
   const [currentCity, setCurrentCity] = useState(1);
 
-const [storages, setStorages] = useState([
+  const [storages, setStorages] = useState([
     {
       cityId: 1,
       storage: [
@@ -21,31 +22,104 @@ const [storages, setStorages] = useState([
           id: 2,
           productList: 20,
         },
+        {
+          id: 5,
+          productList: 14,
+        },
+        {
+          id: 4,
+          productList: 50,
+        },
+        
       ],
     },
     {
       cityId: 2,
       storage: [
         {
+          id: 6,
+          productList: 12,
+        },
+        {
+          id: 2,
+          productList: 20,
+        },
+        {
+          id: 5,
+          productList: 14,
+        },
+      ],
+    },
+    {
+      cityId: 3,
+      storage: [
+        {
           id: 1,
           productList: 5,
+        },
+        {
+          id: 6,
+          productList: 40,
+        },
+        {
+          id: 2,
+          productList: 25,
+        },
+        {
+          id: 5,
+          productList: 4,
         },
       ],
     },
   ]);
 
+//   const goods = () => { fetch("../../../public/db.json", {
+//     headers : { 
+//       'Content-Type': 'application/json',
+//       'Accept': 'application/json'
+//       }
+//      })
+//         .then(function(response) {
+//           return response.json();
+//         })
+//         .then(function(data) {
+//           console.log(data);
+//         })
+// }
+  
   const goods = [{
     id: 1,
-    title: 'Железо'
+    title: "Золотая руда",
+    imageUrl: "../src/assets/img/gold.png"
   }, 
   {
     id: 2,
-    title: 'Дерево'
+    title: "Хлеб",
+    imageUrl: "../src/assets/img/beard.png"
   },
   {
     id: 3,
-    title: 'Еда'
+    title: "Жаренный ласось",
+    imageUrl: "../src/assets/img/lasos.png"
+  },
+  {
+    id: 4,
+    title: "Стрелы",
+    imageUrl: "../src/assets/img/arrow.png"
+  },
+  {
+    id: 5,
+    title: "Яблоко",
+    imageUrl: "../src/assets/img/apple.png"
+  },
+  {
+    id: 6,
+    title: "Железная руда",
+    imageUrl: "../src/assets/img/iron.png"
   }]
+
+  const [money, setMoney] = useState(1000);
+  const [days, setDays] = useState(1);
 
   function getStorageByCity() {
     const store = storages.find((storage) => {
@@ -82,6 +156,13 @@ const [storages, setStorages] = useState([
 
           <div className="transportation">
             <Transportation/>
+          </div>
+
+          <div className="stats">
+            <Stats
+              days={days}
+              money={money}
+            />
           </div>
     
         </div>

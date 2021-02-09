@@ -16,6 +16,11 @@
         margin: 5px;
         vertical-align: top;
         font-size: 12px;
+        cursor: pointer;
+
+        &.selected {
+            border-color: rgb(252, 105, 0);
+        }
 
         .good-description{
             position: absolute;
@@ -32,6 +37,7 @@
 
         &.no-item{
             background-image: none;
+            cursor: default;
         }
 
         &.item-1 {
@@ -70,5 +76,52 @@
             background-position: 0 0;
             
         }
+    }
+}
+
+.sell-panel{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
+
+    .controls{
+        display: flex;
+        justify-content: space-between;
+
+        .input{
+            background: none;
+            width: 30px;
+            border: 1px solid #877f72;
+            margin-right: 5px;
+            color: #d48816;
+
+            &:focus,
+            &:active{
+                box-shadow: none;
+                outline: none;
+            }
+        }
+
+        .button{
+            background: #44200c;
+            color: #d48816;
+            border: 1px solid #877f72;
+            font-size: 12px;
+            cursor: pointer;
+            margin-left: 10px;
+
+            &:focus,
+            &:active{
+                box-shadow: none;
+                outline: none;
+            }
+
+            &:hover{
+                background: #6d3311;
+            }
+            
+        }
+
+       
     }
 }

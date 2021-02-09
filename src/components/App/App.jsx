@@ -10,6 +10,8 @@ import { useState } from 'react';
 function App() {
   const [currentCity, setCurrentCity] = useState(1);
 
+  const [selectedGood, setSelectedGood] = useState(null)
+
   const [storages, setStorages] = useState([
     {
       cityId: 1,
@@ -133,6 +135,38 @@ function App() {
     }
   }
 
+  function liveProcess() {
+    setTimeout(() => {
+      setDays(days + 1)
+    }, 5000)
+  }
+
+  liveProcess()
+
+  const sellGoods = (goodId, qty) => {
+    const storagesNew = storages;
+    let moneyNew = money
+    
+    const index = storagesNew.findIndex((storage) => {
+      return storage.cityId === currentCity
+    })
+    
+
+    if(index > -1) {
+      const goodIndex = storagesNew[index].storage.findIndex((good) => {
+        return good.id === goodId
+      })
+
+      if(goodIndex > -1) {
+        storagesNew[index]. storage[goodIndex].productList -= qty
+        moneyNew += qty * 10
+        setMoney(moneyNew)
+      }
+    }
+
+    setStorages(storagesNew)
+  }
+
 
   return (
     <div className="app">
@@ -151,6 +185,13 @@ function App() {
             currentCity={currentCity}
             storage={getStorageByCity()}
             goods={goods}
+            selectedGood={selectedGood}
+            onSelectedGood={(goodId) => {
+              setSelectedGood(goodId)
+            }}
+            onSell={(id, qty) => {
+              sellGoods(id, qty)
+            }}
             />
           </div>
 

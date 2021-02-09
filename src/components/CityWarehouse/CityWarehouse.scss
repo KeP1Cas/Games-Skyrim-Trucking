@@ -1,0 +1,61 @@
+.city-goods {
+
+    .goods-item-wrappre{
+        display: flex;
+        justify-content: space-between;
+
+        .goods-item{
+            width: 50px;
+            height: 50px;
+            border: 1px solid #877f72;
+            margin: 5px;
+            vertical-align: top;
+            cursor: pointer;
+
+            &.item-1 {
+                background-image: url('../../assets/img/gold.png');
+                background-repeat: no-repeat;
+                background-position: 0 0;
+                
+            }
+            &.item-2 {
+                background-image: url('../../assets/img/beard.png');
+                background-repeat: no-repeat;
+                background-position: 0 0;
+                
+            }
+            &.item-3 {
+                background-image: url('../../assets/img/lasos.png');
+                background-repeat: no-repeat;
+                background-position: 0 0;
+                
+            }
+            &.item-4 {
+                background-image: url('../../assets/img/arrow.png');
+                background-repeat: no-repeat;
+                background-position: 0 0;
+                
+            }
+            &.item-5 {
+                background-image: url('../../assets/img/apple.png');
+                background-repeat: no-repeat;
+                background-position: 0 0;
+                
+            }
+            &.item-6 {
+                background-image: url('../../assets/img/iron.png');
+                background-repeat: no-repeat;
+                background-position: 0 0;
+                
+            }
+        }
+
+        .goods-item-stats{
+            border: 1px solid #877f72;
+            padding: 10px;
+            height: 100px;
+            width: 390px;
+            margin: 5px;
+        }
+    }
+}

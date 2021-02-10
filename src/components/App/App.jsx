@@ -5,7 +5,7 @@ import Transportation from '../Transportation/Transportation';
 import Stats from '../Stats/Stats';
 
 import './App.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   const [currentCity, setCurrentCity] = useState(1);
@@ -120,8 +120,61 @@ function App() {
     imageUrl: "../src/assets/img/iron.png"
   }]
 
+
+  const [cityStorages, setCityStorages] = useState([
+    {
+      cityId: 1,
+      storage: [
+        {
+          id: 1,
+          priceStats: [10, 15, 20, 13, 45, 41, 18],
+          maxSteps: 5,
+          minPrice: 10,
+          maxPrice: 100
+
+        },
+        {
+          id: 2,
+          priceStats: [23, 15, 12, 34, 18, 11, 27],
+          maxSteps: 5,
+          minPrice: 5,
+          maxPrice: 80
+        },
+        {
+          id: 3,
+          priceStats: [19, 23, 15, 25, 35, 10, 13],
+          maxSteps: 5,
+          minPrice: 10,
+          maxPrice: 110
+        }
+      ]
+    },
+    {
+      cityId: 2,
+      storage: [
+        {
+          id: 1,
+          priceStats: [10, 15, 20, 13, 45, 41, 18],
+          maxSteps: 5,
+          minPrice: 10,
+          maxPrice: 100
+
+        },
+        {
+          id: 2,
+          priceStats: [10, 15, 20, 13, 45, 41, 18],
+          maxSteps: 5,
+          minPrice: 10,
+          maxPrice: 100
+        }
+      ]
+    }
+  ])
+
   const [money, setMoney] = useState(1000);
   const [days, setDays] = useState(1);
+
+//=============================================================================
 
   function getStorageByCity() {
     const store = storages.find((storage) => {
@@ -135,13 +188,59 @@ function App() {
     }
   }
 
+//=============================================================================
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max))
+  }
+  function updateCityStorages() {
+    let newCityStorages = cityStorages
+
+    for (let cityIndex = 0; cityIndex < newCityStorages.length; cityIndex++){
+      const storage = newCityStorages[cityIndex].storage
+
+      for (let goodIndex = 0; goodIndex < storage.length; goodIndex++){
+        const goodData = storage[goodIndex] //id, priceStats, maxStep, minPrice, maxPrice
+        const priceChangeSign = getRandomInt(2) ? 1 : -1;
+        const priceChangeValue = getRandomInt(goodData.maxSteps) * priceChangeSign
+       
+        let newPrice = goodData.priceStats.slice(-1).pop() + priceChangeValue
+
+        if(newPrice > goodData.maxPrice) {
+          newPrice = goodData.maxPrice
+        }
+
+        if(newPrice < goodData.minPrice) {
+          newPrice = goodData.minPrice
+        }
+
+        for (let i = 0; i < goodData.priceStats.length - 1; i++){
+          goodData.priceStats[i] = goodData.priceStats[i + 1]
+        }
+
+        goodData.priceStats[goodData.priceStats.length - 1] = newPrice
+    
+        // Ебучая хуйня! Исправить!!!! Выводид в минус , скатина.
+
+        newCityStorages[cityIndex][goodIndex] = goodData
+      }
+    }
+
+    setCityStorages(newCityStorages)
+  }
+
   function liveProcess() {
-    setTimeout(() => {
-      setDays(days + 1)
+    setInterval(() => {
+      updateCityStorages()
+      setDays(days => days + 1)
     }, 5000)
   }
 
-  liveProcess()
+  useEffect(() => {
+    liveProcess()
+  }, [])
+
+  //=============================================================================
+
 
   const sellGoods = (goodId, qty) => {
     const storagesNew = storages;
@@ -167,6 +266,24 @@ function App() {
     setStorages(storagesNew)
   }
 
+  //=============================================================================
+
+
+  const getCityStorages = () => {
+    const store = cityStorages.find((storage) => {
+      return storage.cityId === currentCity;
+    });
+
+    if (store) {
+      return store.storage;
+    } else {
+      return [];
+    }
+  }
+
+
+  //=============================================================================
+  //=============================================================================
 
   return (
     <div className="app">
@@ -209,7 +326,9 @@ function App() {
         </div>
         <div className="column">
           <div className="city__warehouse">
-            <CityWarehouse/>
+            <CityWarehouse
+              storages={getCityStorages()}
+            />
           </div>
         </div>
       </div>

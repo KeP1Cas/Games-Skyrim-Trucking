@@ -4,6 +4,11 @@
         display: flex;
         justify-content: space-between;
 
+        .good-item-discription{
+            width: 52px;
+            margin: 5px;
+        }
+
         .goods-item{
             width: 50px;
             height: 50px;
@@ -48,6 +53,44 @@
                 background-position: 0 0;
                 
             }
+        }
+
+        .input-number{
+            
+                background: none;
+                width: 100%;
+                border: 1px solid #877f72;
+                color: #d48816;
+    
+                &:focus,
+                &:active{
+                    box-shadow: none;
+                    outline: none;
+                }
+        }
+
+        .btn{
+            background: #44200c;
+            color: #d48816;
+            border: 1px solid #877f72;
+            font-size: 12px;
+            cursor: pointer;
+            
+
+            &:focus,
+            &:active{
+                box-shadow: none;
+                outline: none;
+            }
+
+            &:hover{
+                background: #6d3311;
+            }
+            
+        }
+
+        .price-description{
+            font-size: 12px;
         }
 
         .goods-item-stats{

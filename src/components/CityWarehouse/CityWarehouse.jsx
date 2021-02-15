@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CityWarehouse.scss";
 
 import { Line } from "react-chartjs-2";
 
-function CityWarehouse({ storages }) {
+function CityWarehouse({ storages, buyBtn }) {
   // const data = {
   //   labels: ["1", "2", "3", "4", "5", "6", "7", "8"],
   //   datasets: [
@@ -64,20 +64,20 @@ function CityWarehouse({ storages }) {
 
   function getGoodData(priceStats) {
     return {
-
-        labels: ["1", "2", "3", "4", "5", "6", "7", "8"],
-        datasets: [
-          {
-            label: "Цена за шт.",
-            data: priceStats,
-            fill: false,
-            backgroundColor: "#d48816",
-            borderColor: "rgba(255, 99, 132, 0.2)",
-          },
-        ],
-
-    }
+      labels: ["1", "2", "3", "4", "5", "6", "7", "8"],
+      datasets: [
+        {
+          label: "Цена за шт.",
+          data: priceStats,
+          fill: false,
+          backgroundColor: "#d48816",
+          borderColor: "rgba(255, 99, 132, 0.2)",
+        },
+      ],
+    };
   }
+
+  let [number, setNumber] = useState('');
 
   return (
     <div>
@@ -85,18 +85,39 @@ function CityWarehouse({ storages }) {
 
       <div className="panel">
         <div className="city-goods">
-
           {storages.map((good) => {
             return (
-            <div className="goods-item-wrappre">
-              <div className={"goods-item item-" + good.id}></div>
-              <div className="goods-item-stats">
-                <Line data={getGoodData(good.priceStats)} options={options} />
-              </div>
-            </div>
-            )
-          })}
+              <div className="goods-item-wrappre">
+                <div className="good-item-discription">
+                  <div className={"goods-item item-" + good.id}></div>
+                  {number}
+                  <input
+                    className="input-number"
+                    name="count"
+                    value={number}
+                    maxLength={3}
+                    autoComplete={false}
+                    onChange={(e) => {
+                      setNumber(e.currentTarget.value)
 
+                    }}
+                  />
+
+                  <button className="btn" 
+                    onClick={() => {
+                      buyBtn(good.id, number, good.priceStats[good.priceStats.length -1])
+                      setNumber(0)
+                    }}
+                  >Купить</button>
+
+                  <p className="price-description">{good.priceStats[good.priceStats.length -1]} за шт.</p>
+                </div>
+                <div className="goods-item-stats">
+                  <Line data={getGoodData(good.priceStats)} options={options} />
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

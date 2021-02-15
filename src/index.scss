@@ -13,3 +13,12 @@ body {
   min-height: 900px;
 }
 
+
+input {
+  box-sizing: border-box;
+  &:focus,
+  &:active{
+      box-shadow: none;
+      outline: none;
+  }
+}
